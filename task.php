@@ -3,7 +3,7 @@
 # 課題の回答は このファイル をご利用下さい。
 # 回答の出力を確認される際は，「php task.php」をターミナルから実行して下さい。
 
-/*print("#####q1#####".PHP_EOL);
+*print("#####q1#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
@@ -25,10 +25,10 @@ echo PHP_EOL;
 print("#####q3#####".PHP_EOL);
 # 以下に回答を記載
 
-/*２つとも悩んで同時並行で出来たので課題３については
+/*２つとも悩んで同時並行で出来たので
 プログラムを２つ回答しています。宜しくお願いします*/
 
-/*$counted = array();
+$counted = array();
 $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
 
  foreach($numbers as $duplicate) {
@@ -52,7 +52,7 @@ $duplicate = 0;
   print($duplicate);
 
   echo PHP_EOL;
-*/
+
 
 
 print("#####q4#####".PHP_EOL);
