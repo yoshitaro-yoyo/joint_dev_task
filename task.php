@@ -3,7 +3,7 @@
 # 課題の回答は このファイル をご利用下さい。
 # 回答の出力を確認される際は，「php task.php」をターミナルから実行して下さい。
 
-print("#####q1#####".PHP_EOL);
+/*print("#####q1#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
@@ -28,10 +28,10 @@ print("#####q3#####".PHP_EOL);
 /*２つとも悩んで同時並行で出来たので課題３については
 プログラムを２つ回答しています。宜しくお願いします*/
 
-$counted = array();
+/*$counted = array();
 $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
 
- foreach($numbers as $index => $duplicate) {
+ foreach($numbers as $duplicate) {
     if($duplicate === 3) {
       $counted[] = 1;
     }
@@ -52,15 +52,30 @@ $duplicate = 0;
   print($duplicate);
 
   echo PHP_EOL;
+*/
 
-/*print("#####q4#####".PHP_EOL);
+
+print("#####q4#####".PHP_EOL);
 $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null, "バレー"];
 
   # 以下に回答を記載
+$sports_del_null = array_filter($sports);
+$new_sports = array_values($sports_del_null);
+  print_r($new_sports);
 
+/* 以下のプログラムの挙動が理解できません。67-68はコピペしたものを改変しました
+array_search()で値を見つけて、unset()で元の配列から削除はわかるのですが
+while・厳密判定、など意味がわかりません。質問スレッドに投稿したほうがよろしいでしょうか？
+*/
+while( ($index = array_search( null, $sports, true )) !== false ) {
+	unset( $sports[$index] ) ;
+	}
+$new_sports = array_values($sports);
+  print_r($new_sports);
+  
 echo PHP_EOL;
 
-print("#####q5#####".PHP_EOL);
+/*print("#####q5#####".PHP_EOL);
 $array1 = [];
 $array2 = [1, 5, 8, 10];
 
