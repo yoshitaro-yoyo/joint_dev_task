@@ -23,19 +23,34 @@ $array2 = ["bird", "bat", "tiger"];
 echo PHP_EOL;
 
 print("#####q3#####".PHP_EOL);
+# 以下に回答を記載
+
+
+
 $counted = array();
 $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
 
-  # 以下に回答を記載
-  foreach($numbers as $index => $duplicate) {
+ foreach($numbers as $index => $duplicate) {
     if($duplicate === 3) {
-      $counted[] = $duplicate;
+      $counted[] = 1;
     }
     $quantity = count($counted);
-    print($quantity);
+   
   }
+  print($quantity);
 
-echo PHP_EOL;
+  echo PHP_EOL;
+
+$numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
+$duplicate = 0;
+  foreach($numbers as $number) {
+    if ($number === 3) {
+      $duplicate += 1;
+    }
+  }
+  print($duplicate);
+
+  echo PHP_EOL;
 
 /*print("#####q4#####".PHP_EOL);
 $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null, "バレー"];
