@@ -3,7 +3,8 @@
 # 課題の回答は このファイル をご利用下さい。
 # 回答の出力を確認される際は，「php task.php」をターミナルから実行して下さい。
 
-*print("#####q1#####".PHP_EOL);
+/*
+ *print("#####q1#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
@@ -25,10 +26,10 @@ echo PHP_EOL;
 print("#####q3#####".PHP_EOL);
 # 以下に回答を記載
 
-/*２つとも悩んで同時並行で出来たので
-プログラムを２つ回答しています。宜しくお願いします*/
+//２つとも悩んで同時並行で出来たので
+//プログラムを２つ回答しています。宜しくお願いします
 
-$counted = array();
+$counted = [];
 $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
 
  foreach($numbers as $duplicate) {
@@ -46,7 +47,7 @@ $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
 $duplicate = 0;
   foreach($numbers as $number) {
     if ($number === 3) {
-      $duplicate += 1;
+      $duplicate++;
     }
   }
   print($duplicate);
@@ -63,10 +64,11 @@ $sports_del_null = array_filter($sports);
 $new_sports = array_values($sports_del_null);
   print_r($new_sports);
 
-/* 以下のプログラムの挙動が理解できません。67-68はコピペしたものを改変しました
-array_search()で値を見つけて、unset()で元の配列から削除はわかるのですが
-while・厳密判定、など意味がわかりません。質問スレッドに投稿したほうがよろしいでしょうか？
-*/
+//以下のプログラムの挙動が理解できません。67-68はコピペしたものを改変しました
+//array_search()で値を見つけて、unset()で元の配列から削除はわかるのですが
+//while・厳密判定、など意味がわかりません。質問スレッドに投稿したほうがよろしいでしょうか？
+
+
 while( ($index = array_search( null, $sports, true )) !== false ) {
 	unset( $sports[$index] ) ;
 	}
@@ -75,18 +77,33 @@ $new_sports = array_values($sports);
   
 echo PHP_EOL;
 
-/*print("#####q5#####".PHP_EOL);
+*/
+
+print("#####q5#####".PHP_EOL);
 $array1 = [];
 $array2 = [1, 5, 8, 10];
 
   # 以下に回答を記載
-
+  if (empty($array1)) {
+    print("true" . "\n");
+  } 
+  if (!empty($array2)) {
+    print("false");
+  }  
 echo PHP_EOL;
+
 
 print("#####q6#####".PHP_EOL);
 $numbers1 = [1, 2, 3, 4, 5];
+# 以下に回答を記載
 
-  # 以下に回答を記載
+$numbers2 = [];
+  foreach($numbers1 as $numbers) {
+   if($numbers1 >= 1) {
+    $numbers2[] = $numbers * 10;
+   }
+  }
+  print_r($numbers2);
 
 echo PHP_EOL;
 
@@ -94,9 +111,14 @@ print("#####q7#####".PHP_EOL);
 $array = ["1", "2", "3", "4", "5"];
 
   # 以下に回答を記載
+  //foreach($array as $key => $val) {
+  //print_r('[' . $key . ']' . '=>' . $val. "\n");
+  //}
+  $integer = array_map($array);
+  print_r($integer);
 
 echo PHP_EOL;
-
+/*
 print("#####q8#####".PHP_EOL);
 $programming_languages = ["php","ruby","python","javascript"];
 
