@@ -114,23 +114,32 @@ $array = ["1", "2", "3", "4", "5"];
   //foreach($array as $key => $val) {
   //print_r('[' . $key . ']' . '=>' . $val. "\n");
   //}
-  $integer = array_map($array);
-  print_r($integer);
 
+//参照渡しを行う ＆ を変数の前に付ける
+foreach($array as &$integer) {
+  $integer = intval($integer);
+}
+  print_r($array);
+//配列の最後の要素の参照を消す
+  unset($array);
+//print_rではからの要素は返ってこないのでvar_dumpでNullを確認
+  var_dump($array);
 echo PHP_EOL;
-/*
+
 print("#####q8#####".PHP_EOL);
 $programming_languages = ["php","ruby","python","javascript"];
 
   # 以下に回答を記載
-
+  foreach($programming_languages as &$programming_language) {
+    $upper_case_programming_languages = strtoupper($programming_language);
+  }
   # 以下は変更しないで下さい
 print_r($programming_languages);
 echo PHP_EOL;
 print_r($upper_case_programming_languages);
 
 echo PHP_EOL;
-
+/*
 print("#####q9#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
