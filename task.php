@@ -111,10 +111,6 @@ print("#####q7#####".PHP_EOL);
 $array = ["1", "2", "3", "4", "5"];
 
   # 以下に回答を記載
-  //foreach($array as $key => $val) {
-  //print_r('[' . $key . ']' . '=>' . $val. "\n");
-  //}
-
 //参照渡しを行う ＆ を変数の前に付ける
 foreach($array as &$integer) {
   $integer = intval($integer);
@@ -122,11 +118,10 @@ foreach($array as &$integer) {
   print_r($array);
 //配列の最後の要素の参照を消す
   unset($array);
-//print_rではからの要素は返ってこないのでvar_dumpでNullを確認
-  var_dump($array);
+//print_rでは空の要素は返ってこないので確認はvar_dumpでNull
 echo PHP_EOL;
 
-print("#####q8#####".PHP_EOL);
+/*print("#####q8#####".PHP_EOL);
 $programming_languages = ["php","ruby","python","javascript"];
 
   # 以下に回答を記載
