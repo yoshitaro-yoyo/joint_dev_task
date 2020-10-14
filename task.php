@@ -76,7 +76,6 @@ $new_sports = array_values($sports);
   print_r($new_sports);
   
 echo PHP_EOL;
-
 */
 
 print("#####q5#####".PHP_EOL);
@@ -110,35 +109,47 @@ echo PHP_EOL;
 print("#####q7#####".PHP_EOL);
 $array = ["1", "2", "3", "4", "5"];
 
-  # 以下に回答を記載
-//参照渡しを行う ＆ を変数の前に付ける
-foreach($array as &$integer) {
-  $integer = intval($integer);
-}
-  print_r($array);
-//配列の最後の要素の参照を消す
-  unset($array);
-//print_rでは空の要素は返ってこないので確認はvar_dumpでNull
-echo PHP_EOL;
+    # 以下に回答を記載
+  //参照渡しを行う ＆ を変数の前に付ける
+  foreach($array as &$integer) {
+    $integer = intval($integer);
+  }
+    print_r($array);
+  //配列の最後の要素の参照を消す
+    unset($array);
+  //print_rでは空の要素は返ってこないので確認はvar_dumpでNull
+  
+  echo PHP_EOL;
 
-/*print("#####q8#####".PHP_EOL);
+
+print("#####q8#####".PHP_EOL);
 $programming_languages = ["php","ruby","python","javascript"];
 
   # 以下に回答を記載
-  foreach($programming_languages as &$programming_language) {
-    $upper_case_programming_languages = strtoupper($programming_language);
-  }
+  $programming_languages = array_map('ucfirst',$programming_languages);
+  $upper_case_programming_languages = array_map('strtoupper',$programming_languages);
+  
   # 以下は変更しないで下さい
-print_r($programming_languages);
-echo PHP_EOL;
-print_r($upper_case_programming_languages);
+  print_r($programming_languages);
+  print_r($upper_case_programming_languages);
 
 echo PHP_EOL;
-/*
+
+//array_map() 各要素に callback を適用した後、 適用後の要素を含む array を返す。
+
+echo PHP_EOL;
+
 print("#####q9#####".PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
   # 以下に回答を記載
+ $names2 = [];
+  foreach($names as $key => $name) {
+   $number = $key + 1;
+   $name2 = "会員No." .$number." ". $name;
+   array_push($names2,$name2);
+ }
+print_r($names2);
 
 echo PHP_EOL;
 
@@ -146,13 +157,46 @@ print("#####q10#####".PHP_EOL);
 $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","うに丼"];
 
   # 以下に回答を記載
-
+  foreach($foods as $food) {
+      //正規表現にてマッチング 弟二パラメータは文字列
+   if(preg_match('/うに/', $food)) {
+     print("好物です"."\n");
+   } else {
+     print("まぁまぁ好きです". "\n");
+   }
+  }
 echo PHP_EOL;
 
 print("#####q11#####".PHP_EOL);
 $sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]];
 
   # 以下に回答を記載
+  $sports_primary = [];
+  foreach($sports as $key => $sport) {
+    
+    if(is_array($sport)) {
+        //is_array 変数が配列かどうかを検査する
+      $sports_primary = array_merge($sports_primary, $sport);
+        //配列があれば$sports_primaryにmerge
+    } else {
+      array_push($sports_primary,$sport);
+        //なければ$sports_primaryに文字列として配列の最後に追加
+    }
+  }
+  $sports_primary = array_unique($sports_primary);
+  $sports_primary = array_values($sports_primary);
+
+  $sports_primary_val = [];
+  foreach($sports_primary as $key => $sport_primary) {
+    $number = $key + 1;
+    $name = ("No". $number. " ". $sport_primary);
+    array_push($sports_primary_val, $name); 
+  }
+  
+  print("ユーザーの趣味一覧". "\n");
+  foreach($sports_primary_val as $sport_primary_val) {
+    print($sport_primary_val. "\n");
+  }
 
 echo PHP_EOL;
 
@@ -160,6 +204,7 @@ print("#####q12#####".PHP_EOL);
 $data = [ "user" => [ "name" => "satou", "age" => 33 ] ];
 
   # 以下に回答を記載
+  print_r($data["user"]["name"]);
 
 echo PHP_EOL;
 
@@ -168,6 +213,10 @@ $user_data = [ "name" => "神里", "age" => 31, "address" => "埼玉"];
 $update_data = [ "age" => 32, "address" => "沖縄" ];
 
   # 以下に回答を記載
+$merge_data = [];
+$merge_data = array_merge($user_data, $update_data);
+
+print_r($merge_data);
 
 echo PHP_EOL;
 
@@ -175,6 +224,8 @@ print("#####q14#####".PHP_EOL);
 $data = [ "name" => "satou", "age" => 33, "address" => "saitama", "hobby" => "soccer", "email" => "hoge@fuga.com" ];
 
   # 以下に回答を記載
+$arrays_key = array_values($data);
+print_r($arrays_key);
 
 echo PHP_EOL;
 
@@ -183,8 +234,11 @@ $data1 = [ "name" => "saitou", "hobby" => "soccer", "age" => 33, "role" => "admi
 $data2 = [ "name" => "yamada", "hobby" => "baseball", "role" => "normal" ];
 
   # 以下に回答を記載
+  var_export(array_key_exists('age', $data1));
+  print("\n");
+  var_export(array_key_exists('age', $data2));
 
-echo PHP_EOL;
+  echo PHP_EOL;
 
 print("#####q16#####".PHP_EOL);
 $users = [
@@ -195,9 +249,11 @@ $users = [
 ];
 
   # 以下に回答を記載
-
+  foreach($users as $user) {
+    print_r("私の名前は". $user["name"]. "です。年齢は". $user["age"]. "歳です。". "\n");
+  }
 echo PHP_EOL;
-
+/*
 print("#####q17#####".PHP_EOL);
 class User
 {
