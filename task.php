@@ -76,7 +76,7 @@ $new_sports = array_values($sports);
   print_r($new_sports);
   
 echo PHP_EOL;
-*/
+
 
 print("#####q5#####".PHP_EOL);
 $array1 = [];
@@ -253,24 +253,59 @@ $users = [
     print_r("私の名前は". $user["name"]. "です。年齢は". $user["age"]. "歳です。". "\n");
   }
 echo PHP_EOL;
-/*
+?>
+*/
+
 print("#####q17#####".PHP_EOL);
+
+//クラスの定義
 class User
 {
+  //プロパティ（インスタンス変数）→ クラスの情報 ≒ 変数
+  //private(アクセス修飾子と呼ぶ。全3種)は読み取り専用でクラス外からの変更・アクセス不可 
+  //継承を使う場合は protected になるケースがある
+  private $name;
+  private $age;
+  private $gender;
 
-  # コードを追加
-
+  //コンストラクタ。クラスの持つ情報（プロパティ）の初期値設定する時に利用
+  //クラスがインスタンス化時に一番最初に必ず実行
+  //メソッドなので function が用いられる。
+  //アクセス修飾子はクラス外からの参照が有るため public
+  public function __construct($name, $age, $gender) {
+    $this->name = $name;
+    $this->age = $age;
+    $this->gender = $gender;
+    }
+  //-> (アロー演算子) インスタンスのプロパティ（情報）を参照する演算子 アクセスに必要 
+  //$thisはそのクラスから作成されたインスタンス（実体化したもの）自身を指す
+  //（インスタンス）名->プロパティや（インスタンス）名->メソッドと記述
+   
+   //メソッド ≒ 関数
+   public function info() {
+    print("名前：". $this->name. "\n");
+    print("年齢：". $this->age. "\n");
+    print("性別：". $this->gender. "\n");
+   }
 }
 
+
+//クラスのインスタンス化（実体化）し、constractメソッドに値を渡す
+//その際にコンストラクタメソッドのパラメータのプロパティを最初から保持するようになる
+//インスタンス毎にプロパティの値をここで変更できる
 $user1 = new User("神里",32,"男");
 $user2 = new User("あじー",32,"男");
 
+//インスタンスからプロパティやメソッドを呼び出すとき
+//（インスタンス）名->プロパティや（インスタンス）名->メソッドと記述
 $user1->info();
 print("-------------".PHP_EOL);
 $user2->info();
 
 echo PHP_EOL;
 
+
+/*
 print("#####q18#####".PHP_EOL);
 
   # コードを追加
@@ -328,5 +363,5 @@ foreach($humans as $human){
   $zoo->info_entry_fee($human);
 }
 
-echo PHP_EOL; */
+echo PHP_EOL; 
 ?>
