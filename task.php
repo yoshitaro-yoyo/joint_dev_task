@@ -276,17 +276,17 @@ class User
     $this->name = $name;
     $this->age = $age;
     $this->gender = $gender;
-    }
+  }
   //-> (アロー演算子) インスタンスのプロパティ（情報）を参照する演算子 アクセスに必要 
   //$thisはそのクラスから作成されたインスタンス（実体化したもの）自身を指す
   //（インスタンス）名->プロパティや（インスタンス）名->メソッドと記述
    
    //メソッド ≒ 関数
-   public function info() {
+  public function info() {
     print("名前：". $this->name. "\n");
     print("年齢：". $this->age. "\n");
     print("性別：". $this->gender. "\n");
-   }
+  }
 }
 
 
@@ -305,10 +305,29 @@ $user2->info();
 echo PHP_EOL;
 
 
-/*
+
 print("#####q18#####".PHP_EOL);
 
   # コードを追加
+class Man
+{
+  private $name;
+  private $age;
+
+  public function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+  }
+  
+  public function introduce() {
+    if($this->age >= 30) {
+      print("こんにちは，". $this->name. "と申します。宜しくお願いいたします。". "\n");
+    } else {
+      print("はいさいまいど〜，". $this->name. "です！！！". "\n");
+    }
+  }
+}
+
 
 $man1 = new Man("あじー",32);
 $man2 = new Man("ゆたぼん",10);
@@ -319,11 +338,18 @@ $man2->introduce();
 echo PHP_EOL;
 
 print("#####q19#####".PHP_EOL);
+
+//public $member = (宣言されたクラスのメンバーには);どこからでもアクセス可能
+//protected $member そのクラス自身、それを継承したクラス、及び親クラスからのみアクセス可能
+//private $member そのメンバーを定義したクラスからのみアクセス可能
 class Item{
   # 以下を修正して下さい
+  /* protected $name; */
+  //下記の print 関数はオブジェクトから name プロパティにアクセスしようとしている
+  //protected なのでアクセスできないクラス外であり継承とは関係なし
+  public $name;
 
-  protected $name;
-
+  //アクセス権を宣言しない function は public 扱い
   function __construct($book_name){
     $this->name = $book_name;
   }
@@ -334,7 +360,7 @@ $book = new Item("ゼロ秒思考");
 print($book->name.PHP_EOL);
 
 echo PHP_EOL;
-
+/*
 print("#####q20#####".PHP_EOL);
 class Human
 {
