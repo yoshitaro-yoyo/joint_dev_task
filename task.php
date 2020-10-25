@@ -254,7 +254,7 @@ $users = [
   }
 echo PHP_EOL;
 ?>
-*/
+
 
 print("#####q17#####".PHP_EOL);
 
@@ -344,7 +344,7 @@ print("#####q19#####".PHP_EOL);
 //private $member そのメンバーを定義したクラスからのみアクセス可能
 class Item{
   # 以下を修正して下さい
-  /* protected $name; */
+  // protected $name;
   //下記の print 関数はオブジェクトから name プロパティにアクセスしようとしている
   //protected なのでアクセスできないクラス外であり継承とは関係なし
   public $name;
@@ -360,7 +360,7 @@ $book = new Item("ゼロ秒思考");
 print($book->name.PHP_EOL);
 
 echo PHP_EOL;
-
+*/
 
 print("#####q20#####".PHP_EOL);
 
