@@ -268,7 +268,7 @@ class User
   private $age;
   private $gender;
 
-  //コンストラクタ。クラスの持つ情報（プロパティ）の初期値設定する時に利用
+  //コンストラクタ。クラスの持つ情報（プロパティ）の初期化設定する時に利用
   //クラスがインスタンス化時に一番最初に必ず実行
   //メソッドなので function が用いられる。
   //アクセス修飾子はクラス外からの参照が有るため public
@@ -297,7 +297,7 @@ $user1 = new User("神里",32,"男");
 $user2 = new User("あじー",32,"男");
 
 //インスタンスからプロパティやメソッドを呼び出すとき
-//（インスタンス）名->プロパティや（インスタンス）名->メソッドと記述
+//（インスタンス）名->プロパティや（インスタンス）名->メソッド と記述
 $user1->info();
 print("-------------".PHP_EOL);
 $user2->info();
@@ -360,21 +360,45 @@ $book = new Item("ゼロ秒思考");
 print($book->name.PHP_EOL);
 
 echo PHP_EOL;
-/*
+
+
 print("#####q20#####".PHP_EOL);
+
 class Human
 {
-
-  # コードを追加
-
+  public $name;
+  public $age;
+  
+  function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+  }
 }
 
-class Zoo
-{
-    
-  # コードを追加
-    
+class Zoo {
+  private $zoo_name;
+  private $age_price;
+  
+  function __construct($zoo_name, $age_price) {
+    $this->zoo_name = $zoo_name;
+    $this->age_price = $age_price;
+  }
+  //型指定 → Humanクラスから生成されたインスタンスを引数に指定、他の値を引数とすることを禁止
+  //特定クラスのインスタンス以外が放り込まれることを禁止することでメソッドが誤った動作を
+  //しないようにメソッドの使われるべき形を指定する場合によく使われるのが型指定（タイプヒンティング）
+  function info_entry_fee(Human $human) {
+    if($human->age <= 5) {
+      print($human->name."さんの入場料金は ".$this->age_price["infant"]." 円です。". "\n");
+    } elseif ($human->age <= 12) {
+      print($human->name."さんの入場料金は ".$this->age_price["children"]." 円です。". "\n");
+    } elseif ($human->age <= 64) {
+      print($human->name."さんの入場料金は ".$this->age_price["adult"]." 円です。". "\n");
+    } elseif ($human->age <= 120) {
+      print($human->name."さんの入場料金は ".$this->age_price["senior"]." 円です。". "\n");
+    }
+  }
 }
+
 
 $zoo = new Zoo("旭山動物園",[ "infant" => 0, "children" => 400, "adult" => 800, "senior" => 500]);
 
@@ -389,5 +413,42 @@ foreach($humans as $human){
   $zoo->info_entry_fee($human);
 }
 
-echo PHP_EOL; 
+echo PHP_EOL;
+
+
+print("#####q21#####".PHP_EOL);
+
+for($i = 1; $i <= 30; $i++) {
+  if($i % 3 == 0 && $i % 7 == 0){
+  print("FizzHoge". "\n");
+} elseif ($i % 3 == 0 && $i % 5 == 0) {
+  print("Fizz". "\n");
+  } elseif ($i % 3 == 0) {
+    print("FizzBuzz". "\n");
+  } elseif ($i % 5 == 0) {
+    print("Buzz". "\n");
+  } else {
+    print($i. "\n");
+  }
+}
+
+
+/*
+for($i = 1; $i <= 30; $i++) {
+  $result = "";
+  if ($i % 3 == 0) {
+    $result .= "Fizz";
+  } if ($i % 5 == 0) {
+    $result .= "Buzz";
+  } if ($i % 7 == 0) {
+    $result .= "Hoge";
+  } if ($result == "") {
+    $result .= (string) $i;
+  }
+  
+  print($result. "\n");
+  
+}
+*/
+
 ?>
